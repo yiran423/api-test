@@ -1,0 +1,113 @@
+[
+    {
+        "config": {
+            "name": "testset description",
+            "variables": [],
+            "request": {
+                "base_url": "",
+                "headers": {
+                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36"
+                }
+            }
+        }
+    },
+    {
+        "test": {
+            "name": "/api/online-tickets/v1/tickets/unused",
+            "request": {
+                "params": {
+                    "pageNum": "1",
+                    "pageSize": "1",
+                    "userId": "208283",
+                    "type": "RED_PACKET",
+                    "terminal": "PC"
+                },
+                "url": "http://10.20.9.179:9310/api/online-tickets/v1/tickets/unused",
+                "headers": {
+                    "Authorization": "Bearer $tokenUser"
+                },
+                "method": "GET"
+            },
+            "validate": [
+                {
+                    "eq": [
+                        "status_code",
+                        200
+                    ]
+                },
+                {
+                    "eq": [
+                        "headers.Content-Type",
+                        "application/json;charset=UTF-8"
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.offset",
+                        0
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.limit",
+                        2147483647
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.size",
+                        1
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.current",
+                        1
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.searchCount",
+                        true
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.openSort",
+                        true
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.ascs",
+                        null
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.descs",
+                        null
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.orderByField",
+                        null
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.condition",
+                        null
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.asc",
+                        true
+                    ]
+                }
+            ]
+        }
+    }
+]

@@ -1,0 +1,41 @@
+[
+    {
+        "config": {
+            "name": "testset description",
+            "variables": [],
+            "request": {
+                "base_url": "",
+                "headers": {
+                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36"
+                }
+            }
+        }
+    },
+    {
+        "test": {
+            "name": "/api/core/v2/itemFullAudit/initialAudit",
+            "request": {
+                "url": "http://10.20.9.177:9311/api/core/v2/itemFullAudit/secondAudit",
+                "headers": {
+                    "Authorization": "Bearer $tokenA",
+                    "Content-Type": "application/json"
+                },
+                "method": "POST",
+                "json": {
+                    "iteId": "$itemId_m",
+                    "itemState": "FULL_TWO_REVIEW",
+                    "reason": "PASS",
+                    "result": "SUCCESS"
+                }
+            },
+            "validate": [
+                {
+                    "eq": [
+                        "status_code",
+                        200
+                    ]
+                }
+            ]
+        }
+    }
+]

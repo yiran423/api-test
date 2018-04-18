@@ -1,0 +1,318 @@
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> - TestReport</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      color: #333;
+      margin: 0 auto;
+      width: 960px;
+    }
+    #summary, #details {
+      width: 960px;
+    }
+    #summary th {
+      background-color: skyblue;
+      padding: 5px 12px;
+    }
+    #summary td {
+      background-color: lightblue;
+      text-align: center;
+      padding: 4px 8px;
+    }
+    #details th {
+      background-color: skyblue;
+      padding: 5px 12px;
+    }
+    #details td {
+      background-color: lightblue;
+      padding: 5px 12px;
+    }
+    #details .detail {
+      background-color: lightgrey;
+      font-size: smaller;
+      padding: 5px 10px;
+      text-align: center;
+    }
+    #details .success {
+      background-color: greenyellow;
+    }
+    #details .error {
+      background-color: red;
+    }
+    #details .failure {
+      background-color: salmon;
+    }
+    #details .skipped {
+      background-color: gray;
+    }
+
+    .button {
+      font-size: 1em;
+      padding: 6px;
+      width: 4em;
+      text-align: center;
+      background-color: #06d85f;
+      border-radius: 20px/50px;
+      cursor: pointer;
+      transition: all 0.3s ease-out;
+    }
+    a.button{
+      color: gray;
+      text-decoration: none;
+    }
+    .button:hover {
+      background: #2cffbd;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      transition: opacity 500ms;
+      visibility: hidden;
+      opacity: 0;
+    }
+    .overlay:target {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .popup {
+      margin: 70px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 5px;
+      width: 30%;
+      position: relative;
+      transition: all 5s ease-in-out;
+    }
+
+    .popup h2 {
+      margin-top: 0;
+      color: #333;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+    .popup .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      transition: all 200ms;
+      font-size: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+    }
+    .popup .close:hover {
+      color: #06d85f;
+    }
+    .popup .content {
+      max-height: 30%;
+      overflow: auto;
+      text-align: left;
+    }
+
+    @media screen and (max-width: 700px) {
+      .box {
+        width: 70%;
+      }
+      .popup {
+        width: 70%;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>Test Report: </h1>
+
+  <h2>Summary</h2>
+  <table id="summary">
+
+    <tr>
+      <th>START AT</th>
+      <td colspan="4">2018-04-09 09:47:52</td>
+    </tr>
+    <tr>
+      <th>DURATION</th>
+      <td colspan="4">0.119 seconds</td>
+    </tr>
+    <tr>
+      <th>PLATFORM</th>
+      <td>HttpRunner 1.3.7 </td>
+      <td>CPython 3.6.4 </td>
+      <td colspan="2">Darwin-16.7.0-x86_64-i386-64bit</td>
+    </tr>
+    <tr>
+      <th>TOTAL</th>
+      <th>SUCCESS</th>
+      <th>FAILED</th>
+      <th>ERROR</th>
+      <th>SKIPPED</th>
+      <!-- <th>ExpectedFailure</th>
+      <th>UnexpectedSuccess</th> -->
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <!-- <td>0</td>
+      <td>0</td> -->
+    </tr>
+  </table>
+
+  <h2>Details</h2>
+  <table id="details">
+    <tr>
+      <th>Status</th>
+      <th>Name</th>
+      <th>Response Time</th>
+      <th>Detail</th>
+    </tr>
+    
+      <tr>
+        <th class="error" style="width:5em;">error</td>
+        <td>/api/core/v2/itemPublish/applyLoan</td>
+        <td style="text-align:center;width:6em;">88.8 ms</td>
+        <td class="detail">
+
+            <a class="button" href="#popup_log_1">log</a>
+            <div id="popup_log_1" class="overlay">
+              <div class="popup">
+                <h2>Request and Response data</h2>
+                <a class="close" href="#">&times;</a>
+                <div class="content"><pre>{
+  "url": "/api/core/v2/itemPublish/applyLoan",
+  "method": "POST",
+  "request_headers": {
+    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36",
+    "Accept-Encoding": "gzip, deflate",
+    "Accept": "*/*",
+    "Connection": "keep-alive",
+    "content-type": "application/json",
+    "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJ1c2VySWRcIjoxLFwidXNlcm5hbWVcIjpcInRlc3RcIn0iLCJpc3MiOiJldG9uZ2RhaSIsImV4cCI6MTUyMzMzMTE1MCwiaWF0IjoxNTIzMTUxMTUwfQ.91fw6g8bHdSAp2Yj4XEeSBVJj5QnDVYD3MhiRFmR2NYPLo2SheL0GYTxEBKedT1RTQ2E-Iy_3n987sSWbMrkAQ",
+    "Content-Length": "401"
+  },
+  "request_body": "{\"itemBidMin\": \"ONE_HUNDRED\", \"itemBidDate\": 5, \"itemRepayInterval\": \"MONTH\", \"itemRepayType\": \"DEBX\", \"itemLimit\": 10000000, \"collateralIds\": \"\", \"itemDescContent\": \"a test for api test\", \"itemGroupId\": 0, \"itemReason\": \"SHORT_TERM_CYCLE\", \"itemTitle\": \"liushuo api test\", \"itemApplyType\": \"CREDITLOAN\", \"itemRepayDate\": 5, \"itemBorrowerUserId\": 201335, \"itemYearRate\": 0.11, \"newUserItem\": \"NORMAL\"}",
+  "request_time": 1523238472.079457,
+  "status_code": 200,
+  "response_headers": {
+    "X-Content-Type-Options": "nosniff",
+    "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+    "Pragma": "no-cache",
+    "Expires": "0",
+    "X-Frame-Options": "DENY",
+    "Set-Cookie": "JSESSIONID=CA37AEBA3F88078386869E7BFBEBF093; Path=/; HttpOnly",
+    "Content-Type": "application/json;charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Date": "Mon, 09 Apr 2018 01:47:53 GMT"
+  },
+  "response_body": {
+    "itemApplyType": "CREDITLOAN",
+    "itemId": 7841,
+    "itemTitle": "liushuo api test",
+    "itemLimit": 10000000,
+    "itemRepayDate": 5,
+    "itemType": "CREDIT",
+    "itemReason": "SHORT_TERM_CYCLE",
+    "itemYearRate": 0.11,
+    "itemBidDate": 5,
+    "itemRepayType": "DEBX",
+    "itemDescContent": "a test for api test",
+    "itemVersion": null,
+    "itemApplyLoanCollateralResponses": []
+  },
+  "content_size": 322,
+  "response_time(ms)": 88.8,
+  "elapsed(ms)": 79.299
+}</pre></div>
+              </div>
+            </div>
+
+            
+              <a class="button" href="#popup_attachment_1">traceback</a>
+              <div id="popup_attachment_1" class="overlay">
+                <div class="popup">
+                  <h2>Traceback Message</h2>
+                  <a class="close" href="#">&times;</a>
+                  <div class="content"><pre>Traceback (most recent call last):
+AssertionError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+httprunner.exception.ValidationError: 
+	check item name: content.itemTitle;
+	check item value: liushuo api test (str);
+	comparator: equals;
+	expected value: strittttitleng (str).
+</pre></div>
+                </div>
+              </div>
+            
+
+        </td>
+      </tr>
+    
+      <tr>
+        <th class="success" style="width:5em;">success</td>
+        <td>/api/core/v2/itemPublish/applyLoan</td>
+        <td style="text-align:center;width:6em;">19.7 ms</td>
+        <td class="detail">
+
+            <a class="button" href="#popup_log_2">log</a>
+            <div id="popup_log_2" class="overlay">
+              <div class="popup">
+                <h2>Request and Response data</h2>
+                <a class="close" href="#">&times;</a>
+                <div class="content"><pre>{
+  "url": "/api/core/v2/itemPublish/applyLoan",
+  "method": "PUT",
+  "request_headers": {
+    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36",
+    "Accept-Encoding": "gzip, deflate",
+    "Accept": "*/*",
+    "Connection": "keep-alive",
+    "content-type": "application/json",
+    "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJ1c2VySWRcIjoxLFwidXNlcm5hbWVcIjpcInRlc3RcIn0iLCJpc3MiOiJldG9uZ2RhaSIsImV4cCI6MTUyMzMzMTE1MCwiaWF0IjoxNTIzMTUxMTUwfQ.91fw6g8bHdSAp2Yj4XEeSBVJj5QnDVYD3MhiRFmR2NYPLo2SheL0GYTxEBKedT1RTQ2E-Iy_3n987sSWbMrkAQ",
+    "Cookie": "JSESSIONID=CA37AEBA3F88078386869E7BFBEBF093",
+    "Content-Length": "86"
+  },
+  "request_body": "{\"collateralIds\": \"\", \"itemApplyType\": \"CREDITLOAN\", \"itemId\": 7841, \"itemVersion\": 0}",
+  "request_time": 1523238472.171233,
+  "status_code": 200,
+  "response_headers": {
+    "X-Content-Type-Options": "nosniff",
+    "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+    "Pragma": "no-cache",
+    "Expires": "0",
+    "X-Frame-Options": "DENY",
+    "Content-Type": "application/json;charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Date": "Mon, 09 Apr 2018 01:47:53 GMT"
+  },
+  "response_body": {
+    "success": true,
+    "info": null
+  },
+  "content_size": 28,
+  "response_time(ms)": 19.7,
+  "elapsed(ms)": 17.522
+}</pre></div>
+              </div>
+            </div>
+
+            
+
+        </td>
+      </tr>
+    
+  </table>
+</body>

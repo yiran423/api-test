@@ -1,0 +1,38 @@
+[
+    {
+        "config": {
+            "name": "usercenter upload",
+            "request": {
+                "headers": {
+                }, 
+                "base_url": ""
+            }
+        }
+    }, 
+    {
+        "test": {
+            "name": "/api/usercenter/v2/auth/login",
+            "request": {
+                "url": "http://10.20.9.153:9010/api/usercenter/v2/informations/attachment",
+                "method": "POST", 
+                "headers": {
+                    "Content-Type": "$ctype",
+                    "Authorization": "$token"
+                    },
+                "params": {
+                    "attachmentName": "pic",
+                    "attachmentType": "JB"
+                },
+                "data": "$img"
+            }, 
+            "validate": [
+                    {
+                        "eq": [
+                        "status_code", 
+                        200
+                        ]
+                }
+            ]  
+        }
+    }
+]

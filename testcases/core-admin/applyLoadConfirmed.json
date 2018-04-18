@@ -1,0 +1,271 @@
+[
+    {
+        "config": {
+            "variables": [
+                {"tokeA": "${create_token($useridA, $usernameA)}"},
+                {"tokeB": "${create_token($useridB, $usernameB)}"}
+            ], 
+            "request": {
+                "headers": {
+                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36"
+                }, 
+                "base_url": ""
+            }, 
+            "name": "testset description"
+        }
+    },
+    {
+        "test": {
+            "validate": [
+                {
+                    "eq": [
+                        "status_code", 
+                        200
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "headers.Content-Type", 
+                        "application/json;charset=UTF-8"
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemRepayDate", 
+                        6
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemType", 
+                        "CREDIT"
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemLimit", 
+                        10000000
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemApplyType", 
+                        "CREDITLOAN"
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemReason", 
+                        "SHORT_TERM_CYCLE"
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemDescContent", 
+                        "This a test for api"
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemVersion", 
+                        null
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemYearRate", 
+                        0.11
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemBidDate", 
+                        3
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemRepayType", 
+                        "DEBX"
+                    ]
+                }
+            ], 
+            "extract": [
+                    {
+                        "itemId": "content.itemId"
+                }
+            ],   
+            "request": {
+                "url": "http://10.20.9.177:9311/api/core/v2/itemPublish/applyLoan", 
+                "headers": {
+                    "Content-Type": "application/json", 
+                    "Authorization": "Bearer $tokeA"
+                }, 
+                "json": {
+                    "itemBidMin": "ONE_HUNDRED", 
+                    "itemBidDate": 3, 
+                    "itemRepayInterval": "MONTH", 
+                    "itemRepayType": "DEBX", 
+                    "itemLimit": 10000000, 
+                    "collateralIds": "", 
+                    "itemDescContent": "This a test for api", 
+                    "itemGroupId": 22, 
+                    "itemReason": "SHORT_TERM_CYCLE", 
+                    "itemTitle": "liushuo api test $timeStamp", 
+                    "itemApplyType": "CREDITLOAN", 
+                    "itemRepayDate": 6, 
+                    "itemBorrowerUserId": 201335, 
+                    "itemYearRate": 0.11, 
+                    "newUserItem": "NORMAL"
+                }, 
+                "method": "POST"
+            }, 
+            "name": "/api/core/v2/itemPublish/applyLoan"
+        }
+    },
+    {
+            "test": {
+            "validate": [
+                {
+                    "eq": [
+                        "status_code", 
+                        200
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.success", 
+                        true
+                    ]
+                }
+            ], 
+            "request": {
+                "url": "http://10.20.9.177:9311/api/core/v2/itemPublish/applyLoan", 
+                "headers": {
+                    "Content-Type": "application/json", 
+                    "Authorization": "Bearer $tokeA"
+                }, 
+                "json": {
+                    "collateralIds": "",
+                    "itemApplyType": "CREDITLOAN",
+                    "itemId": "$itemId",
+                    "itemVersion": 0
+                },
+                "method": "PUT"
+            }, 
+            "name": "/api/core/v2/itemPublish/applyLoan"
+        }
+    }, 
+    {
+        "test": {
+            "validate": [
+                {
+                    "eq": [
+                        "status_code", 
+                        200
+                    ]
+                }
+            ], 
+            "request": {
+                "url": "http://10.20.9.177:9311/api/core/v2/itemPublishAudit/item", 
+                "headers": {
+                    "Content-Type": "application/json", 
+                    "Authorization": "Bearer $tokenB"
+                },
+                "json": {
+                    "auditType": "FIRST_AUDIT",
+                    "isDirectPublish": false,
+                    "iteInvestRewardDelay": 2,
+                    "iteInvestRewardLimit": 0.1,
+                    "iteLateCharge": 0.2,
+                    "iteOverdueDays": 5,
+                    "iteServiceFeePct": 0.1,
+                    "itemId": "$itemId",
+                    "itemSafeguardType": "NOT_ASSURE",
+                    "itemVersion": 0,
+                    "reason": "reason for no reason",
+                    "result": "PASS",
+                    "safeguards": ""
+                },
+
+                "method": "PUT"
+            }, 
+            "name": "/api/core/v2/itemPublishAudit/item"
+        }
+    },
+    {
+        "test": {
+            "validate": [
+                {
+                    "eq": [
+                        "status_code", 
+                        200
+                    ]
+                }
+            ], 
+            "request": {
+                "url": "http://10.20.9.177:9311/api/core/v2/itemPublishAudit/item", 
+                "headers": {
+                    "Content-Type": "application/json", 
+                    "Authorization": "Bearer $tokenB"
+                },
+                "json": {
+                    "auditType": "ONE_AUDIT",
+                    "isDirectPublish": false,
+                    "iteInvestRewardDelay": 2,
+                    "iteInvestRewardLimit": 0.1,
+                    "iteLateCharge": 0.2,
+                    "iteOverdueDays": 5,
+                    "iteServiceFeePct": 0.1,
+                    "itemId": "$itemId",
+                    "itemSafeguardType": "NOT_ASSURE",
+                    "itemVersion": 1,
+                    "reason": "reason for no reason",
+                    "result": "PASS",
+                    "safeguards": ""
+                },
+
+                "method": "PUT"
+            }, 
+            "name": "/api/core/v2/itemPublishAudit/item"
+        }
+    },
+    {
+        "test": {
+            "validate": [
+                {
+                    "eq": [
+                        "status_code", 
+                        200
+                    ]
+                }
+            ], 
+            "request": {
+                "url": "http://10.20.9.177:9311/api/core/v2/itemPublishAudit/item", 
+                "headers": {
+                    "Content-Type": "application/json", 
+                    "Authorization": "Bearer $tokenB"
+                },
+                "json": {
+                    "auditType": "TWO_AUDIT",
+                    "isDirectPublish": true,
+                    "iteInvestRewardDelay": 2,
+                    "iteInvestRewardLimit": 0.1,
+                    "iteLateCharge": 0.2,
+                    "iteOverdueDays": 5,
+                    "iteServiceFeePct": 0.1,
+                    "itemId": "$itemId",
+                    "itemSafeguardType": "NOT_ASSURE",
+                    "itemVersion": 2,
+                    "reason": "reason for no reason",
+                    "result": "PASS",
+                    "safeguards": ""
+                },
+
+                "method": "PUT"
+            }, 
+            "name": "/api/core/v2/itemPublishAudit/item"
+        }
+    }
+
+]

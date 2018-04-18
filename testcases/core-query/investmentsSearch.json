@@ -1,0 +1,76 @@
+[
+    {
+        "config": {
+            "variables": [], 
+            "request": {
+                "headers": {
+                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36"
+                }, 
+                "base_url": ""
+            }, 
+            "name": "testset description"
+        }
+    }, 
+    {
+        "test": {
+
+            "setup_hooks": [
+                "setup_hook_replace"
+            ],
+            "teardown_hooks": [
+                "teardown_hook_refresh"
+            ],
+            "validate": [
+                {
+                    "eq": [
+                        "status_code", 
+                        200
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "headers.Content-Type", 
+                        "application/json;charset=UTF-8"
+                    ]
+                },  
+                {
+                    "eq": [
+                        "content.currPage", 
+                        1
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.pageSize", 
+                        10
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.data.10.iteId",
+                        7904
+                    ]
+                }
+            ], 
+            "request": {
+                "url": "http://10.20.9.132:8890/api/core/v1/items/investments", 
+                "headers": {
+                    "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTYyOTciLCJpc3MiOiJldG9uZ2RhaSJ9.0-_pvWUsZ5VRRnXEjvnTxmP6PlEoFTAn07azlYtmcJTsPAu4rUYRDr75RpEG7ZArIFM3-Oy6LNSrE67Ee5ECBw"
+                }, 
+                "params": {
+                    "byProgress": "1", 
+                    "byLimit": "1", 
+                    "repayType": "1", 
+                    "pageSize": "10", 
+                    "yearRate": "2", 
+                    "currPage": "1", 
+                    "byInterest": "1", 
+                    "timeLimit": "6", 
+                    "isFixed": "0"
+                }, 
+                "method": "GET"
+            }, 
+            "name": "/api/core/v1/items/investments"
+        }
+    }
+]

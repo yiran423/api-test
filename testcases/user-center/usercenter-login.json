@@ -1,0 +1,44 @@
+[
+    {
+        "config": {
+            "name": "usercenter login",
+            "request": {
+                "headers": {
+
+                }, 
+                "base_url": ""
+            }
+        }
+    }, 
+    {
+        "test": {
+            "name": "/api/usercenter/v2/auth/login",
+            "request": {
+                "url": "http://10.20.9.153:9010/api/usercenter/v2/auth/login",
+                "method": "POST", 
+                "headers": {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                    },
+                "json": {
+                            "mobile": "$phone_number",
+                            "oauthType": "ETONGDAI",
+                            "password": "61F5FDF04F09759CC0EE572AE18DAAC9"
+                    }
+            }, 
+            "validate": [
+                    {
+                        "eq": [
+                        "status_code", 
+                        200
+                        ]
+                }
+            ], 
+            "extract": [
+                    {
+                        "token": "content.token"
+                }
+            ]    
+        }
+    }
+]

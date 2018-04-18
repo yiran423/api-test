@@ -1,0 +1,176 @@
+[
+    {
+        "config": {
+            "name": "testset description",
+            "variables": [],
+            "request": {
+                "base_url": "",
+                "headers": {
+                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36"
+                }
+            }
+        }
+    },
+    {
+        "test": {
+            "name": "/api/core/v2/invest/itemDetail",
+            "request": {
+                "params": {
+                    "iteId": "$itemId",
+                    "terminal": "PC"
+                },
+                "url": "http://10.20.9.177:9310/api/core/v2/invest/itemDetail",
+                "headers": {
+                    "Authorization": "Bearer $tokenUser"
+                },
+                "method": "GET"
+            },
+            "validate": [
+                {
+                    "eq": [
+                        "status_code",
+                        200
+                    ]
+                },
+                {
+                    "eq": [
+                        "headers.Content-Type",
+                        "application/json;charset=UTF-8"
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.iteId",
+                        "$itemId_m"
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.iteTitle",
+                        "liushuo api test 2018-04-13 14:16:06"
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.iteType",
+                        "CREDIT"
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.iteYearRate",
+                        0.11
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.iteRepayDate",
+                        6
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.iteRepayInterval",
+                        "MONTH"
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.iteRepayType",
+                        "DEBX"
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.newUserItem",
+                        "NORMAL"
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.iteState",
+                        "ISSUED"
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.iteBidDeadline",
+                        "2018-04-16T14:16:06"
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.iteBorrowerUseId",
+                        201335
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.iteBidMin",
+                        "ONE_HUNDRED"
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.iteFullTime",
+                        null
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.iteCreateTime",
+                        "2018-04-13T14:16:06"
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.newUserItemCapAmt",
+                        null
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.interestStartTime",
+                        null
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.iteTypeDesc",
+                        "信用贷"
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.iteRepayIntervalDesc",
+                        "个月"
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.iteRepayTypeDesc",
+                        "按月等额本息"
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.newUserItemDesc",
+                        "普通标"
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.iteStateDesc",
+                        "发标二级复审通过-已发标"
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.iteBidMinYuan",
+                        100.0
+                    ]
+                }
+            ]
+        }
+    }
+]

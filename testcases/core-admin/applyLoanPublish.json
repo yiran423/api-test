@@ -1,0 +1,162 @@
+[
+    {
+        "config": {
+            "variables": [], 
+            "request": {
+                "headers": {
+                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36"
+                }, 
+                "base_url": ""
+            }, 
+            "name": "testset description"
+        }
+    }, 
+    {
+        "test": {
+            "validate": [
+                {
+                    "eq": [
+                        "status_code", 
+                        200
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "headers.Content-Type", 
+                        "application/json;charset=UTF-8"
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemRepayDate", 
+                        5
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemType", 
+                        "CREDIT"
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemLimit", 
+                        10000000
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemApplyType", 
+                        "CREDITLOAN"
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemReason", 
+                        "SHORT_TERM_CYCLE"
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemTitle", 
+                        "liushuo api test $timeStamp_m"
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemDescContent", 
+                        "This a test for api"
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemVersion", 
+                        null
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemYearRate", 
+                        0.11
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemBidDate", 
+                        5
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.itemRepayType", 
+                        "DEBX"
+                    ]
+                }
+            ], 
+            "extract": [
+                    {
+                        "itemId": "content.itemId"
+                }
+            ],   
+            "request": {
+                "url": "http://10.20.9.177:9311/api/core/v2/itemPublish/applyLoan", 
+                "headers": {
+                    "Content-Type": "application/json", 
+                    "Authorization": "Bearer $tokenA"
+                }, 
+                "json": {
+                    "itemBidMin": "ONE_HUNDRED", 
+                    "itemBidDate": 5, 
+                    "itemRepayInterval": "MONTH", 
+                    "itemRepayType": "DEBX", 
+                    "itemLimit": 10000000, 
+                    "collateralIds": "", 
+                    "itemDescContent": "This a test for api", 
+                    "itemGroupId": 0, 
+                    "itemReason": "SHORT_TERM_CYCLE", 
+                    "itemTitle": "liushuo api test $timeStamp_m", 
+                    "itemApplyType": "CREDITLOAN", 
+                    "itemRepayDate": 5, 
+                    "itemBorrowerUserId": 201335, 
+                    "itemYearRate": 0.11, 
+                    "newUserItem": "NORMAL"
+                }, 
+                "method": "POST"
+            }, 
+            "name": "/api/core/v2/itemPublish/applyLoan"
+        }
+    },
+    {
+            "test": {
+            "validate": [
+                {
+                    "eq": [
+                        "status_code", 
+                        200
+                    ]
+                }, 
+                {
+                    "eq": [
+                        "content.success", 
+                        true
+                    ]
+                }
+            ], 
+            "request": {
+                "url": "http://10.20.9.177:9311/api/core/v2/itemPublish/applyLoan", 
+                "headers": {
+                    "Content-Type": "application/json", 
+                    "Authorization": "Bearer $tokenA"
+                }, 
+                "json": {
+                    "collateralIds": "",
+                    "itemApplyType": "CREDITLOAN",
+                    "itemId": "$itemId",
+                    "itemVersion": 0
+                },
+                "method": "PUT"
+            }, 
+            "name": "/api/core/v2/itemPublish/applyLoan"
+        }
+    }
+]

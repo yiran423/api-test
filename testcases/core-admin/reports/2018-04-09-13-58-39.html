@@ -1,0 +1,404 @@
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> - TestReport</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      color: #333;
+      margin: 0 auto;
+      width: 960px;
+    }
+    #summary, #details {
+      width: 960px;
+    }
+    #summary th {
+      background-color: skyblue;
+      padding: 5px 12px;
+    }
+    #summary td {
+      background-color: lightblue;
+      text-align: center;
+      padding: 4px 8px;
+    }
+    #details th {
+      background-color: skyblue;
+      padding: 5px 12px;
+    }
+    #details td {
+      background-color: lightblue;
+      padding: 5px 12px;
+    }
+    #details .detail {
+      background-color: lightgrey;
+      font-size: smaller;
+      padding: 5px 10px;
+      text-align: center;
+    }
+    #details .success {
+      background-color: greenyellow;
+    }
+    #details .error {
+      background-color: red;
+    }
+    #details .failure {
+      background-color: salmon;
+    }
+    #details .skipped {
+      background-color: gray;
+    }
+
+    .button {
+      font-size: 1em;
+      padding: 6px;
+      width: 4em;
+      text-align: center;
+      background-color: #06d85f;
+      border-radius: 20px/50px;
+      cursor: pointer;
+      transition: all 0.3s ease-out;
+    }
+    a.button{
+      color: gray;
+      text-decoration: none;
+    }
+    .button:hover {
+      background: #2cffbd;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      transition: opacity 500ms;
+      visibility: hidden;
+      opacity: 0;
+    }
+    .overlay:target {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .popup {
+      margin: 70px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 5px;
+      width: 30%;
+      position: relative;
+      transition: all 5s ease-in-out;
+    }
+
+    .popup h2 {
+      margin-top: 0;
+      color: #333;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+    .popup .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      transition: all 200ms;
+      font-size: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+    }
+    .popup .close:hover {
+      color: #06d85f;
+    }
+    .popup .content {
+      max-height: 30%;
+      overflow: auto;
+      text-align: left;
+    }
+
+    @media screen and (max-width: 700px) {
+      .box {
+        width: 70%;
+      }
+      .popup {
+        width: 70%;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>Test Report: </h1>
+
+  <h2>Summary</h2>
+  <table id="summary">
+
+    <tr>
+      <th>START AT</th>
+      <td colspan="4">2018-04-09 13:58:39</td>
+    </tr>
+    <tr>
+      <th>DURATION</th>
+      <td colspan="4">2.818 seconds</td>
+    </tr>
+    <tr>
+      <th>PLATFORM</th>
+      <td>HttpRunner 1.3.7 </td>
+      <td>CPython 3.6.4 </td>
+      <td colspan="2">Darwin-16.7.0-x86_64-i386-64bit</td>
+    </tr>
+    <tr>
+      <th>TOTAL</th>
+      <th>SUCCESS</th>
+      <th>FAILED</th>
+      <th>ERROR</th>
+      <th>SKIPPED</th>
+      <!-- <th>ExpectedFailure</th>
+      <th>UnexpectedSuccess</th> -->
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <!-- <td>0</td>
+      <td>0</td> -->
+    </tr>
+  </table>
+
+  <h2>Details</h2>
+  <table id="details">
+    <tr>
+      <th>Status</th>
+      <th>Name</th>
+      <th>Response Time</th>
+      <th>Detail</th>
+    </tr>
+    
+      <tr>
+        <th class="success" style="width:5em;">success</td>
+        <td>/api/core/v2/itemPublish/applyLoan</td>
+        <td style="text-align:center;width:6em;">833.8 ms</td>
+        <td class="detail">
+
+            <a class="button" href="#popup_log_1">log</a>
+            <div id="popup_log_1" class="overlay">
+              <div class="popup">
+                <h2>Request and Response data</h2>
+                <a class="close" href="#">&times;</a>
+                <div class="content"><pre>{
+  "url": "/api/core/v2/itemPublish/applyLoan",
+  "method": "POST",
+  "request_headers": {
+    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36",
+    "Accept-Encoding": "gzip, deflate",
+    "Accept": "*/*",
+    "Connection": "keep-alive",
+    "content-type": "application/json",
+    "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJldG9uZ2RhaSIsImlhdCI6MTUyMzI1MzUxOSwiZXhwIjoxNTIzODU4MzE5LCJzdWIiOiJ7XCJ1c2VySWRcIjogXCIyMDYwNTNcIiwgXCJ1c2VybmFtZVwiOiBcIkV0ZGFlZ2c2ODRcIn0ifQ.CqT5uWzObdwDsP-WEOgvCJnmvS8nqW2WjMoff_sK1mituVR6KUaCMNnT4DUyGlJd5k_Un_htxEbv9cMW7Vrkrw",
+    "Content-Length": "401"
+  },
+  "request_body": "{\"itemBidMin\": \"ONE_HUNDRED\", \"itemBidDate\": 5, \"itemRepayInterval\": \"MONTH\", \"itemRepayType\": \"DEBX\", \"itemLimit\": 10000000, \"collateralIds\": \"\", \"itemDescContent\": \"This a test for api\", \"itemGroupId\": 0, \"itemReason\": \"SHORT_TERM_CYCLE\", \"itemTitle\": \"liushuo api test\", \"itemApplyType\": \"CREDITLOAN\", \"itemRepayDate\": 5, \"itemBorrowerUserId\": 201335, \"itemYearRate\": 0.11, \"newUserItem\": \"NORMAL\"}",
+  "request_time": 1523253519.328762,
+  "status_code": 200,
+  "response_headers": {
+    "X-Content-Type-Options": "nosniff",
+    "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+    "Pragma": "no-cache",
+    "Expires": "0",
+    "X-Frame-Options": "DENY",
+    "Set-Cookie": "JSESSIONID=AB7C48C4882D1773E1E825DD107476AD; Path=/; HttpOnly",
+    "Content-Type": "application/json;charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Date": "Mon, 09 Apr 2018 05:58:39 GMT"
+  },
+  "response_body": {
+    "itemApplyType": "CREDITLOAN",
+    "itemId": 7856,
+    "itemTitle": "liushuo api test",
+    "itemLimit": 10000000,
+    "itemRepayDate": 5,
+    "itemType": "CREDIT",
+    "itemReason": "SHORT_TERM_CYCLE",
+    "itemYearRate": 0.11,
+    "itemBidDate": 5,
+    "itemRepayType": "DEBX",
+    "itemDescContent": "This a test for api",
+    "itemVersion": null,
+    "itemApplyLoanCollateralResponses": []
+  },
+  "content_size": 322,
+  "response_time(ms)": 833.78,
+  "elapsed(ms)": 826.035
+}</pre></div>
+              </div>
+            </div>
+
+            
+
+        </td>
+      </tr>
+    
+      <tr>
+        <th class="success" style="width:5em;">success</td>
+        <td>/api/core/v2/itemPublish/applyLoan</td>
+        <td style="text-align:center;width:6em;">44.5 ms</td>
+        <td class="detail">
+
+            <a class="button" href="#popup_log_2">log</a>
+            <div id="popup_log_2" class="overlay">
+              <div class="popup">
+                <h2>Request and Response data</h2>
+                <a class="close" href="#">&times;</a>
+                <div class="content"><pre>{
+  "url": "/api/core/v2/itemPublish/applyLoan",
+  "method": "PUT",
+  "request_headers": {
+    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36",
+    "Accept-Encoding": "gzip, deflate",
+    "Accept": "*/*",
+    "Connection": "keep-alive",
+    "content-type": "application/json",
+    "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJldG9uZ2RhaSIsImlhdCI6MTUyMzI1MzUxOSwiZXhwIjoxNTIzODU4MzE5LCJzdWIiOiJ7XCJ1c2VySWRcIjogXCIyMDYwNTNcIiwgXCJ1c2VybmFtZVwiOiBcIkV0ZGFlZ2c2ODRcIn0ifQ.CqT5uWzObdwDsP-WEOgvCJnmvS8nqW2WjMoff_sK1mituVR6KUaCMNnT4DUyGlJd5k_Un_htxEbv9cMW7Vrkrw",
+    "Cookie": "JSESSIONID=AB7C48C4882D1773E1E825DD107476AD",
+    "Content-Length": "86"
+  },
+  "request_body": "{\"collateralIds\": \"\", \"itemApplyType\": \"CREDITLOAN\", \"itemId\": 7856, \"itemVersion\": 0}",
+  "request_time": 1523253520.165178,
+  "status_code": 200,
+  "response_headers": {
+    "X-Content-Type-Options": "nosniff",
+    "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+    "Pragma": "no-cache",
+    "Expires": "0",
+    "X-Frame-Options": "DENY",
+    "Content-Type": "application/json;charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Date": "Mon, 09 Apr 2018 05:58:39 GMT"
+  },
+  "response_body": {
+    "success": true,
+    "info": null
+  },
+  "content_size": 28,
+  "response_time(ms)": 44.46,
+  "elapsed(ms)": 41.651
+}</pre></div>
+              </div>
+            </div>
+
+            
+
+        </td>
+      </tr>
+    
+      <tr>
+        <th class="success" style="width:5em;">success</td>
+        <td>/api/core/v2/itemPublishAudit/item</td>
+        <td style="text-align:center;width:6em;">1815.3 ms</td>
+        <td class="detail">
+
+            <a class="button" href="#popup_log_3">log</a>
+            <div id="popup_log_3" class="overlay">
+              <div class="popup">
+                <h2>Request and Response data</h2>
+                <a class="close" href="#">&times;</a>
+                <div class="content"><pre>{
+  "url": "/api/core/v2/itemPublishAudit/item",
+  "method": "PUT",
+  "request_headers": {
+    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36",
+    "Accept-Encoding": "gzip, deflate",
+    "Accept": "*/*",
+    "Connection": "keep-alive",
+    "content-type": "application/json",
+    "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJldG9uZ2RhaSIsImlhdCI6MTUyMzI1MzUyMCwiZXhwIjoxNTIzODU4MzIwLCJzdWIiOiJ7XCJ1c2VySWRcIjogXCIyMDYwNDlcIiwgXCJ1c2VybmFtZVwiOiBcIkV0ZGR4bnUzNDNcIn0ifQ.K3dWpGCFqtSLiuPt8cKtjgAGz9QDfGwFKEp-kzW5-faqDrYWHTE3o-yDrtTCqYp-om5L2pTSLly9UOwch_xlig",
+    "Cookie": "JSESSIONID=AB7C48C4882D1773E1E825DD107476AD",
+    "Content-Length": "317"
+  },
+  "request_body": "{\"auditType\": \"FIRST_AUDIT\", \"isDirectPublish\": false, \"iteInvestRewardDelay\": 2, \"iteInvestRewardLimit\": 0.1, \"iteLateCharge\": 0.2, \"iteOverdueDays\": 5, \"iteServiceFeePct\": 0.1, \"itemId\": 7856, \"itemSafeguardType\": \"NOT_ASSURE\", \"itemVersion\": 0, \"reason\": \"reason for no reason\", \"result\": \"PASS\", \"safeguards\": \"\"}",
+  "request_time": 1523253520.214506,
+  "status_code": 200,
+  "response_headers": {
+    "X-Content-Type-Options": "nosniff",
+    "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+    "Pragma": "no-cache",
+    "Expires": "0",
+    "X-Frame-Options": "DENY",
+    "Content-Type": "application/json;charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Date": "Mon, 09 Apr 2018 05:58:39 GMT"
+  },
+  "response_body": {
+    "success": true,
+    "info": null
+  },
+  "content_size": 28,
+  "response_time(ms)": 1815.32,
+  "elapsed(ms)": 809.447
+}</pre></div>
+              </div>
+            </div>
+
+            
+
+        </td>
+      </tr>
+    
+      <tr>
+        <th class="success" style="width:5em;">success</td>
+        <td>/api/core/v2/itemPublishAudit/item</td>
+        <td style="text-align:center;width:6em;">99.0 ms</td>
+        <td class="detail">
+
+            <a class="button" href="#popup_log_4">log</a>
+            <div id="popup_log_4" class="overlay">
+              <div class="popup">
+                <h2>Request and Response data</h2>
+                <a class="close" href="#">&times;</a>
+                <div class="content"><pre>{
+  "url": "/api/core/v2/itemPublishAudit/item",
+  "method": "PUT",
+  "request_headers": {
+    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36",
+    "Accept-Encoding": "gzip, deflate",
+    "Accept": "*/*",
+    "Connection": "keep-alive",
+    "content-type": "application/json",
+    "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJldG9uZ2RhaSIsImlhdCI6MTUyMzI1MzUyMiwiZXhwIjoxNTIzODU4MzIyLCJzdWIiOiJ7XCJ1c2VySWRcIjogXCIyMDYwNDlcIiwgXCJ1c2VybmFtZVwiOiBcIkV0ZGR4bnUzNDNcIn0ifQ.V3IX-UxExAwWD0x4J6nLu38du_77w_bM8n3J0sB4f5Qkm-V5oBNQCfKEW2V7Uy6ep9a9_BvBr_c_Q_Ta1Lg5Pw",
+    "Cookie": "JSESSIONID=AB7C48C4882D1773E1E825DD107476AD",
+    "Content-Length": "315"
+  },
+  "request_body": "{\"auditType\": \"ONE_AUDIT\", \"isDirectPublish\": false, \"iteInvestRewardDelay\": 2, \"iteInvestRewardLimit\": 0.1, \"iteLateCharge\": 0.2, \"iteOverdueDays\": 5, \"iteServiceFeePct\": 0.1, \"itemId\": 7856, \"itemSafeguardType\": \"NOT_ASSURE\", \"itemVersion\": 1, \"reason\": \"reason for no reason\", \"result\": \"PASS\", \"safeguards\": \"\"}",
+  "request_time": 1523253522.032861,
+  "status_code": 200,
+  "response_headers": {
+    "X-Content-Type-Options": "nosniff",
+    "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+    "Pragma": "no-cache",
+    "Expires": "0",
+    "X-Frame-Options": "DENY",
+    "Content-Type": "application/json;charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Date": "Mon, 09 Apr 2018 05:58:42 GMT"
+  },
+  "response_body": {
+    "success": true,
+    "info": null
+  },
+  "content_size": 28,
+  "response_time(ms)": 98.99,
+  "elapsed(ms)": 96.753
+}</pre></div>
+              </div>
+            </div>
+
+            
+
+        </td>
+      </tr>
+    
+  </table>
+</body>

@@ -1,0 +1,73 @@
+[
+    {
+        "config": {
+            "name": "testset description",
+            "variables": [],
+            "request": {
+                "base_url": "",
+                "headers": {
+                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36"
+                }
+            }
+        }
+    },
+    {
+        "test": {
+            "name": "/api/core/v2/invest/complete",
+            "request": {
+                "url": "http://10.20.9.177:9310/api/core/v2/invest/complete",
+                "headers": {
+                    "Authorization": "Bearer $tokenUser",
+                    "Content-Type": "application/json"
+                },
+                "method": "POST",
+                "json": {
+                    "investAmt": 100,
+                    "investRequestType": "CONFIRM",
+                    "iteId": "$itemId_m",
+                    "myTotalInvSumYuan": 0,
+                    "operId": 0,
+                    "password": "qwe123",
+                    "payAmt": 99,
+                    "terminal": "PC",
+                    "ticId": "$ticketId",
+                    "ticType": "RED_PACKET",
+                    "ticValue": 1,
+                    "userId": 0
+                }
+            },
+            "validate": [
+                {
+                    "eq": [
+                        "status_code",
+                        200
+                    ]
+                },
+                {
+                    "eq": [
+                        "headers.Content-Type",
+                        "application/json;charset=UTF-8"
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.code",
+                        null
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.investSum",
+                        100.0
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.errorInfo",
+                        "投资成功！"
+                    ]
+                }
+            ]
+        }
+    }
+]

@@ -1,0 +1,517 @@
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> - TestReport</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      color: #333;
+      margin: 0 auto;
+      width: 960px;
+    }
+    #summary, #details {
+      width: 960px;
+    }
+    #summary th {
+      background-color: skyblue;
+      padding: 5px 12px;
+    }
+    #summary td {
+      background-color: lightblue;
+      text-align: center;
+      padding: 4px 8px;
+    }
+    #details th {
+      background-color: skyblue;
+      padding: 5px 12px;
+    }
+    #details td {
+      background-color: lightblue;
+      padding: 5px 12px;
+    }
+    #details .detail {
+      background-color: lightgrey;
+      font-size: smaller;
+      padding: 5px 10px;
+      text-align: center;
+    }
+    #details .success {
+      background-color: greenyellow;
+    }
+    #details .error {
+      background-color: red;
+    }
+    #details .failure {
+      background-color: salmon;
+    }
+    #details .skipped {
+      background-color: gray;
+    }
+
+    .button {
+      font-size: 1em;
+      padding: 6px;
+      width: 4em;
+      text-align: center;
+      background-color: #06d85f;
+      border-radius: 20px/50px;
+      cursor: pointer;
+      transition: all 0.3s ease-out;
+    }
+    a.button{
+      color: gray;
+      text-decoration: none;
+    }
+    .button:hover {
+      background: #2cffbd;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      transition: opacity 500ms;
+      visibility: hidden;
+      opacity: 0;
+    }
+    .overlay:target {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .popup {
+      margin: 70px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 5px;
+      width: 30%;
+      position: relative;
+      transition: all 5s ease-in-out;
+    }
+
+    .popup h2 {
+      margin-top: 0;
+      color: #333;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+    .popup .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      transition: all 200ms;
+      font-size: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+    }
+    .popup .close:hover {
+      color: #06d85f;
+    }
+    .popup .content {
+      max-height: 30%;
+      overflow: auto;
+      text-align: left;
+    }
+
+    @media screen and (max-width: 700px) {
+      .box {
+        width: 70%;
+      }
+      .popup {
+        width: 70%;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>Test Report: </h1>
+
+  <h2>Summary</h2>
+  <table id="summary">
+
+    <tr>
+      <th>START AT</th>
+      <td colspan="4">2018-04-13 14:20:36</td>
+    </tr>
+    <tr>
+      <th>DURATION</th>
+      <td colspan="4">1.596 seconds</td>
+    </tr>
+    <tr>
+      <th>PLATFORM</th>
+      <td>HttpRunner 1.3.7 </td>
+      <td>CPython 3.6.4 </td>
+      <td colspan="2">Darwin-16.7.0-x86_64-i386-64bit</td>
+    </tr>
+    <tr>
+      <th>TOTAL</th>
+      <th>SUCCESS</th>
+      <th>FAILED</th>
+      <th>ERROR</th>
+      <th>SKIPPED</th>
+      <!-- <th>ExpectedFailure</th>
+      <th>UnexpectedSuccess</th> -->
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <!-- <td>0</td>
+      <td>0</td> -->
+    </tr>
+  </table>
+
+  <h2>Details</h2>
+  <table id="details">
+    <tr>
+      <th>Status</th>
+      <th>Name</th>
+      <th>Response Time</th>
+      <th>Detail</th>
+    </tr>
+    
+      <tr>
+        <th class="success" style="width:5em;">success</td>
+        <td>/api/core/v1/items/investments</td>
+        <td style="text-align:center;width:6em;">1007.9 ms</td>
+        <td class="detail">
+
+            <a class="button" href="#popup_log_1">log</a>
+            <div id="popup_log_1" class="overlay">
+              <div class="popup">
+                <h2>Request and Response data</h2>
+                <a class="close" href="#">&times;</a>
+                <div class="content"><pre>{
+  "url": "/api/core/v1/items/investments?byProgress=1&byLimit=1&repayType=1&pageSize=10&yearRate=2&currPage=1&byInterest=1&timeLimit=6&isFixed=0",
+  "method": "GET",
+  "request_headers": {
+    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36",
+    "Accept-Encoding": "gzip, deflate",
+    "Accept": "*/*",
+    "Connection": "keep-alive",
+    "authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTYyOTciLCJpc3MiOiJldG9uZ2RhaSJ9.0-_pvWUsZ5VRRnXEjvnTxmP6PlEoFTAn07azlYtmcJTsPAu4rUYRDr75RpEG7ZArIFM3-Oy6LNSrE67Ee5ECBw"
+  },
+  "request_body": "None",
+  "request_time": 1523600437.227844,
+  "status_code": 200,
+  "response_headers": {
+    "X-Content-Type-Options": "nosniff",
+    "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+    "Pragma": "no-cache",
+    "Expires": "0",
+    "X-Frame-Options": "DENY",
+    "Content-Type": "application/json;charset=UTF-8",
+    "Date": "Fri, 13 Apr 2018 06:20:37 GMT",
+    "Transfer-Encoding": "chunked",
+    "Proxy-Connection": "Keep-alive"
+  },
+  "response_body": {
+    "request": {
+      "userId": null,
+      "yearRate": 2,
+      "timeLimit": 6,
+      "repayType": "1",
+      "currPage": 1,
+      "pageSize": 10,
+      "isFixed": 0,
+      "byInterest": 1,
+      "byProgress": 1,
+      "byLimit": 1,
+      "level": null,
+      "excludeList": null
+    },
+    "count": 13,
+    "currPage": 1,
+    "pageSize": 10,
+    "data": [
+      {
+        "iteId": 7579,
+        "borrowerId": 202659,
+        "iteType": "1",
+        "iteTypeName": "信用贷",
+        "title": "加息券微信-28-04",
+        "yearRate": 0.12,
+        "repayDate": 1,
+        "repayInterval": "1",
+        "repayIntervalName": "个月",
+        "repayType": "3",
+        "repayTypeName": "到期还本息",
+        "remainMoney": 20000,
+        "remainMoneyYuan": "200.00",
+        "progress": 0.8,
+        "isNewItem": "1",
+        "state": "5-3",
+        "stateName": "发标二级复审通过-已发标",
+        "amount": 100000,
+        "amountYuan": "1000.00",
+        "safeguardType": "1",
+        "safeguardTypeName": "无担保",
+        "borrowLevelName": "B",
+        "safeguardList": [
+          {
+            "iteId": 7579,
+            "type": "1",
+            "typeName": "征信认证"
+          }
+        ]
+      },
+      {
+        "iteId": 7866,
+        "borrowerId": 201335,
+        "iteType": "1",
+        "iteTypeName": "信用贷",
+        "title": "liushuo api test",
+        "yearRate": 0.11,
+        "repayDate": 6,
+        "repayInterval": "1",
+        "repayIntervalName": "个月",
+        "repayType": "1",
+        "repayTypeName": "按月等额本息",
+        "remainMoney": 10000000,
+        "remainMoneyYuan": "100000.00",
+        "progress": 0.0,
+        "isNewItem": "0",
+        "state": "5-3",
+        "stateName": "发标二级复审通过-已发标",
+        "amount": 10000000,
+        "amountYuan": "100000.00",
+        "safeguardType": "1",
+        "safeguardTypeName": "无担保",
+        "borrowLevelName": "B",
+        "safeguardList": []
+      },
+      {
+        "iteId": 7868,
+        "borrowerId": 201335,
+        "iteType": "1",
+        "iteTypeName": "信用贷",
+        "title": "liushuo api test",
+        "yearRate": 0.11,
+        "repayDate": 6,
+        "repayInterval": "1",
+        "repayIntervalName": "个月",
+        "repayType": "1",
+        "repayTypeName": "按月等额本息",
+        "remainMoney": 10000000,
+        "remainMoneyYuan": "100000.00",
+        "progress": 0.0,
+        "isNewItem": "0",
+        "state": "5-3",
+        "stateName": "发标二级复审通过-已发标",
+        "amount": 10000000,
+        "amountYuan": "100000.00",
+        "safeguardType": "1",
+        "safeguardTypeName": "无担保",
+        "borrowLevelName": "B",
+        "safeguardList": []
+      },
+      {
+        "iteId": 7879,
+        "borrowerId": 201335,
+        "iteType": "1",
+        "iteTypeName": "信用贷",
+        "title": "liushuo api test",
+        "yearRate": 0.11,
+        "repayDate": 6,
+        "repayInterval": "1",
+        "repayIntervalName": "个月",
+        "repayType": "1",
+        "repayTypeName": "按月等额本息",
+        "remainMoney": 10000000,
+        "remainMoneyYuan": "100000.00",
+        "progress": 0.0,
+        "isNewItem": "0",
+        "state": "5-3",
+        "stateName": "发标二级复审通过-已发标",
+        "amount": 10000000,
+        "amountYuan": "100000.00",
+        "safeguardType": "1",
+        "safeguardTypeName": "无担保",
+        "borrowLevelName": "B",
+        "safeguardList": []
+      },
+      {
+        "iteId": 7880,
+        "borrowerId": 201335,
+        "iteType": "1",
+        "iteTypeName": "信用贷",
+        "title": "liushuo api test 2018-04-10 16:20:13",
+        "yearRate": 0.11,
+        "repayDate": 6,
+        "repayInterval": "1",
+        "repayIntervalName": "个月",
+        "repayType": "1",
+        "repayTypeName": "按月等额本息",
+        "remainMoney": 10000000,
+        "remainMoneyYuan": "100000.00",
+        "progress": 0.0,
+        "isNewItem": "0",
+        "state": "5-3",
+        "stateName": "发标二级复审通过-已发标",
+        "amount": 10000000,
+        "amountYuan": "100000.00",
+        "safeguardType": "1",
+        "safeguardTypeName": "无担保",
+        "borrowLevelName": "B",
+        "safeguardList": []
+      },
+      {
+        "iteId": 7884,
+        "borrowerId": 201335,
+        "iteType": "1",
+        "iteTypeName": "信用贷",
+        "title": "liushuo api test 2018-04-13 13:50:30",
+        "yearRate": 0.11,
+        "repayDate": 6,
+        "repayInterval": "1",
+        "repayIntervalName": "个月",
+        "repayType": "1",
+        "repayTypeName": "按月等额本息",
+        "remainMoney": 10000000,
+        "remainMoneyYuan": "100000.00",
+        "progress": 0.0,
+        "isNewItem": "0",
+        "state": "5-3",
+        "stateName": "发标二级复审通过-已发标",
+        "amount": 10000000,
+        "amountYuan": "100000.00",
+        "safeguardType": "1",
+        "safeguardTypeName": "无担保",
+        "borrowLevelName": "B",
+        "safeguardList": []
+      },
+      {
+        "iteId": 7886,
+        "borrowerId": 201335,
+        "iteType": "1",
+        "iteTypeName": "信用贷",
+        "title": "liushuo api test 2018-04-13 14:09:31",
+        "yearRate": 0.11,
+        "repayDate": 6,
+        "repayInterval": "1",
+        "repayIntervalName": "个月",
+        "repayType": "1",
+        "repayTypeName": "按月等额本息",
+        "remainMoney": 10000000,
+        "remainMoneyYuan": "100000.00",
+        "progress": 0.0,
+        "isNewItem": "0",
+        "state": "5-3",
+        "stateName": "发标二级复审通过-已发标",
+        "amount": 10000000,
+        "amountYuan": "100000.00",
+        "safeguardType": "1",
+        "safeguardTypeName": "无担保",
+        "borrowLevelName": "B",
+        "safeguardList": []
+      },
+      {
+        "iteId": 7887,
+        "borrowerId": 201335,
+        "iteType": "1",
+        "iteTypeName": "信用贷",
+        "title": "liushuo api test 2018-04-13 14:16:06",
+        "yearRate": 0.11,
+        "repayDate": 6,
+        "repayInterval": "1",
+        "repayIntervalName": "个月",
+        "repayType": "1",
+        "repayTypeName": "按月等额本息",
+        "remainMoney": 10000000,
+        "remainMoneyYuan": "100000.00",
+        "progress": 0.0,
+        "isNewItem": "0",
+        "state": "5-3",
+        "stateName": "发标二级复审通过-已发标",
+        "amount": 10000000,
+        "amountYuan": "100000.00",
+        "safeguardType": "1",
+        "safeguardTypeName": "无担保",
+        "borrowLevelName": "B",
+        "safeguardList": []
+      },
+      {
+        "iteId": 7525,
+        "borrowerId": 206041,
+        "iteType": "1",
+        "iteTypeName": "信用贷",
+        "title": "准备数据-卢-勿动03",
+        "yearRate": 0.13,
+        "repayDate": 6,
+        "repayInterval": "1",
+        "repayIntervalName": "个月",
+        "repayType": "1",
+        "repayTypeName": "按月等额本息",
+        "remainMoney": 19900000,
+        "remainMoneyYuan": "199000.00",
+        "progress": 0.005,
+        "isNewItem": "0",
+        "state": "5-3",
+        "stateName": "发标二级复审通过-已发标",
+        "amount": 20000000,
+        "amountYuan": "200000.00",
+        "safeguardType": "3",
+        "safeguardTypeName": "本息保障计划",
+        "borrowLevelName": "B",
+        "safeguardList": [
+          {
+            "iteId": 7525,
+            "type": "3",
+            "typeName": "合作机构"
+          }
+        ]
+      },
+      {
+        "iteId": 7340,
+        "borrowerId": 205754,
+        "iteType": "1",
+        "iteTypeName": "信用贷",
+        "title": "元旦活动-并列第一项目2",
+        "yearRate": 0.11,
+        "repayDate": 6,
+        "repayInterval": "1",
+        "repayIntervalName": "个月",
+        "repayType": "1",
+        "repayTypeName": "按月等额本息",
+        "remainMoney": 0,
+        "remainMoneyYuan": "0.00",
+        "progress": 1.0,
+        "isNewItem": "0",
+        "state": "6",
+        "stateName": "满标待初审",
+        "amount": 3000000,
+        "amountYuan": "30000.00",
+        "safeguardType": "1",
+        "safeguardTypeName": "无担保",
+        "borrowLevelName": "B",
+        "safeguardList": [
+          {
+            "iteId": 7340,
+            "type": "1",
+            "typeName": "征信认证"
+          }
+        ]
+      }
+    ]
+  },
+  "content_size": 5626,
+  "response_time(ms)": 1007.9,
+  "elapsed(ms)": 4.798
+}</pre></div>
+              </div>
+            </div>
+
+            
+
+        </td>
+      </tr>
+    
+  </table>
+</body>
